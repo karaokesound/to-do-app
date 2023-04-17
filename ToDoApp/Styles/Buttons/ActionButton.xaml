@@ -1,0 +1,346 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
+    <!--// GENERATE KEY BUTTON //-->
+    <Style TargetType="Button"
+           x:Key="generateKeyButton">
+        <Setter Property="Background" Value="#542d7c " />
+        <Setter Property="Foreground" Value="#FFD700" />
+        <Setter Property="FontSize" Value="13" />
+        <Setter Property="FontWeight" Value="Bold" />
+        <Setter Property="Width" Value="200" />
+        <Setter Property="Height" Value="20" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border Background="{TemplateBinding Background}"
+                            Width="{TemplateBinding Width}"
+                            Height="{TemplateBinding Height}"
+                            CornerRadius="2"
+                            BorderThickness="1"
+                            BorderBrush="Black">
+                        <ContentPresenter ContentSource="Content"
+                                          TextBlock.TextAlignment="Center"
+                                          VerticalAlignment="Center"
+                                          HorizontalAlignment="Center"
+                                          Margin="5,0,0,0"
+                                          TextBlock.FontSize="{TemplateBinding FontSize}">
+                        </ContentPresenter>
+                    </Border>
+                    <!--//TRIGGERS//-->
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver"
+                                 Value="True">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ColorAnimation Storyboard.TargetProperty="Background.(SolidColorBrush.Color)"
+                                                        To="#ae9ac2"
+                                                        Duration="0:0:0:0.1" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ColorAnimation Storyboard.TargetProperty="Background.(SolidColorBrush.Color)"
+                                                        To="#926fb4"
+                                                        Duration="0:0:0:0.1" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--// PROFILE MENU BUTTON //-->
+    <Style TargetType="Button"
+           x:Key="profileMenuButton">
+        <Setter Property="Background" Value="#24496f" />
+        <Setter Property="Opacity" Value="0.9" />
+        <Setter Property="Foreground" Value="#cdca00" />
+        <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="FontWeight" Value="DemiBold" />
+        <Setter Property="FontSize" Value="14.5" />
+        <Setter Property="Width" Value="125" />
+        <Setter Property="Height" Value="115" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border Background="{TemplateBinding Background}"
+                            Width="{TemplateBinding Width}"
+                            Height="{TemplateBinding Height}"
+                            CornerRadius="6"
+                            BorderThickness="3"
+                            BorderBrush="#1e4670">
+                        <ContentPresenter ContentSource="Content"
+                                          TextBlock.TextAlignment="Center"
+                                          VerticalAlignment="Center"
+                                          HorizontalAlignment="Center"
+                                          TextBlock.FontSize="{TemplateBinding FontSize}">
+                        </ContentPresenter>
+                    </Border>
+                    <!--//TRIGGERS//-->
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver"
+                                 Value="True">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ColorAnimation Storyboard.TargetProperty="Background.(SolidColorBrush.Color)"
+                                                        To=" #2b6aa2 "
+                                                        Duration="0:0:0:0.1" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ColorAnimation Storyboard.TargetProperty="Background.(SolidColorBrush.Color)"
+                                                        To="#24496f"
+                                                        Duration="0:0:0:0.2" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--// PROFILE MENU BUTTON 2.0 //--> 
+    <Style TargetType="Button"
+           x:Key="profileMenuButton2">
+        <Setter Property="Background" Value="#24496f" />
+        <Setter Property="Opacity" Value="0.9" />
+        <Setter Property="Foreground" Value="#cdca00" />
+        <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="FontWeight" Value="DemiBold" />
+        <Setter Property="FontSize" Value="13" />
+        <Setter Property="Width" Value="125" />
+        <Setter Property="Height" Value="115" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border Background="{TemplateBinding Background}"
+                            Width="{TemplateBinding Width}"
+                            Height="{TemplateBinding Height}"
+                            CornerRadius="6"
+                            BorderThickness="3"
+                            BorderBrush="#1e4670">
+                        <ContentPresenter ContentSource="Content"
+                                          TextBlock.TextAlignment="Center"
+                                          VerticalAlignment="Center"
+                                          HorizontalAlignment="Center"
+                                          TextBlock.FontSize="{TemplateBinding FontSize}">
+                        </ContentPresenter>
+                    </Border>
+                    <!--//TRIGGERS//-->
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver"
+                                 Value="True">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ColorAnimation Storyboard.TargetProperty="Background.(SolidColorBrush.Color)"
+                                                        To=" #2b6aa2 "
+                                                        Duration="0:0:0:0.1" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ColorAnimation Storyboard.TargetProperty="Background.(SolidColorBrush.Color)"
+                                                        To="#24496f"
+                                                        Duration="0:0:0:0.2" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--// SELECT TASK MENU BUTTONS //-->
+    <!--// edit //-->
+    <Style TargetType="Button"
+           x:Key="editTaskButton">
+        <Setter Property="Background" Value="Black" />
+        <Setter Property="Opacity" Value="0.8" />
+        <Setter Property="Foreground" Value="#cdca00" />
+        <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="FontWeight" Value="DemiBold" />
+        <Setter Property="FontSize" Value="13" />
+        <Setter Property="Width" Value="90" />
+        <Setter Property="Height" Value="25" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border Background="{TemplateBinding Background}"
+                            Width="{TemplateBinding Width}"
+                            Height="{TemplateBinding Height}"
+                            CornerRadius="6"
+                            BorderThickness="3"
+                            BorderBrush="#1e1e1e">
+                        <ContentPresenter ContentSource="Content"
+                                          TextBlock.TextAlignment="Center"
+                                          VerticalAlignment="Center"
+                                          HorizontalAlignment="Center"
+                                          TextBlock.FontSize="{TemplateBinding FontSize}">
+                        </ContentPresenter>
+                    </Border>
+                    <!--//TRIGGERS//-->
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver"
+                                 Value="True">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ColorAnimation Storyboard.TargetProperty="Background.(SolidColorBrush.Color)"
+                                                        To="#3b3b3b"
+                                                        Duration="0:0:0:0.1" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ColorAnimation Storyboard.TargetProperty="Background.(SolidColorBrush.Color)"
+                                                        To="Black"
+                                                        Duration="0:0:0:0.2" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--// save //--> 
+    <Style TargetType="Button"
+           x:Key="saveTaskButton">
+        <Setter Property="Background" Value="#22431f" />
+        <Setter Property="Opacity" Value="0.8" />
+        <Setter Property="Foreground" Value="#cdca00" />
+        <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="FontWeight" Value="DemiBold" />
+        <Setter Property="FontSize" Value="13" />
+        <Setter Property="Width" Value="100" />
+        <Setter Property="Height" Value="30" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border Background="{TemplateBinding Background}"
+                            Width="{TemplateBinding Width}"
+                            Height="{TemplateBinding Height}"
+                            CornerRadius="6"
+                            BorderThickness="2"
+                            BorderBrush=" #3a543e ">
+                        <ContentPresenter ContentSource="Content"
+                                          TextBlock.TextAlignment="Center"
+                                          VerticalAlignment="Center"
+                                          HorizontalAlignment="Center"
+                                          TextBlock.FontSize="{TemplateBinding FontSize}">
+                        </ContentPresenter>
+                    </Border>
+                    <!--//TRIGGERS//-->
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver"
+                                 Value="True">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ColorAnimation Storyboard.TargetProperty="Background.(SolidColorBrush.Color)"
+                                                        To="#527356"
+                                                        Duration="0:0:0:0.1" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ColorAnimation Storyboard.TargetProperty="Background.(SolidColorBrush.Color)"
+                                                        To="#22431f"
+                                                        Duration="0:0:0:0.2" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--// exit //-->
+    <Style TargetType="Button"
+           x:Key="exitTaskButton">
+        <Setter Property="Background" Value="#54272b" />
+        <Setter Property="Opacity" Value="0.8" />
+        <Setter Property="Foreground" Value="#cdca00" />
+        <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="FontWeight" Value="DemiBold" />
+        <Setter Property="FontSize" Value="13" />
+        <Setter Property="Width" Value="100" />
+        <Setter Property="Height" Value="30" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border Background="{TemplateBinding Background}"
+                            Width="{TemplateBinding Width}"
+                            Height="{TemplateBinding Height}"
+                            CornerRadius="6"
+                            BorderThickness="2"
+                            BorderBrush="#6a3434">
+                        <ContentPresenter ContentSource="Content"
+                                          TextBlock.TextAlignment="Center"
+                                          VerticalAlignment="Center"
+                                          HorizontalAlignment="Center"
+                                          TextBlock.FontSize="{TemplateBinding FontSize}">
+                        </ContentPresenter>
+                    </Border>
+                    <!--//TRIGGERS//-->
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver"
+                                 Value="True">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ColorAnimation Storyboard.TargetProperty="Background.(SolidColorBrush.Color)"
+                                                        To="  #735252  "
+                                                        Duration="0:0:0:0.1" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ColorAnimation Storyboard.TargetProperty="Background.(SolidColorBrush.Color)"
+                                                        To="#54272b"
+                                                        Duration="0:0:0:0.2" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <!--// END OF SELECT TASK MENU BUTTONS //-->
+    
+</ResourceDictionary>

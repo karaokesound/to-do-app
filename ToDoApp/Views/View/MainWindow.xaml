@@ -1,0 +1,282 @@
+﻿<Window x:Class="ToDoApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ToDoApp"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Background="Transparent"
+        MouseDown="Window_MouseDown"
+        FontFamily="Rubik"
+        Height="558" Width="900">
+    <Window.Resources>
+        <ResourceDictionary>
+            <BooleanToVisibilityConverter x:Key="booleanToVisibilityConverter" />
+        </ResourceDictionary>
+    </Window.Resources>
+    <Grid>
+        <!--// TODO APPLICATION //-->
+        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.20*" />
+            <RowDefinition Height="0.6*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="0.15*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="0.50*" />
+            <ColumnDefinition Width="0.50*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <!--// BACKGROUND //-->
+        <Border Grid.RowSpan="5"
+                Grid.ColumnSpan="4"
+                CornerRadius="6"
+                BorderThickness="0.5"
+                BorderBrush="#d3d3d3">
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,5">
+                    <GradientStop Color="#004561" Offset="0.0" />
+                    <GradientStop Color="#343157" Offset="0.30" />
+                    <GradientStop Color="tomato" Offset="0.77" />
+                </LinearGradientBrush>
+            </Border.Background>
+        </Border>
+
+        <!--// background - straps //-->
+        <Grid Grid.ColumnSpan="4"
+              Grid.Row="3">
+            <Border Height="0.5"
+                    Background="#d3d3d3"
+                    VerticalAlignment="Top"
+                    Margin="0,35,0,0"
+                    Width="450"/>
+            <Border Height="1"
+                    Background="#d3d3d3"
+                    VerticalAlignment="Center"/>
+            <Border Height="0.5"
+                    Background="#d3d3d3"
+                    VerticalAlignment="Bottom"
+                    Margin="0,0,0,35"
+                    Width="450"/>
+            <Border Height="1"
+                    Background="Black"
+                    VerticalAlignment="Center"
+                    Margin="0,55,0,0"
+                    Width="650"/>
+            <Border Height="1"
+                    Background="Black"
+                    VerticalAlignment="Center"
+                    Margin="0,0,0,55"
+                    Width="650"/>
+        </Grid>
+
+        <!--// NAVIGATION BAR STYLE //-->
+        <Border Background="#1c2833"
+                BorderThickness="0.4"
+                BorderBrush="#D3D3D3"
+                Grid.ColumnSpan="4"
+                CornerRadius="6" />
+
+        <!--// NAVIGATION BAR //-->
+        <!--// key //-->
+        <StackPanel Grid.ColumnSpan="4"
+                    VerticalAlignment="Center"
+                    TextBlock.Foreground="White"
+                    DataContext="{Binding LoginPanelVM}">
+            <TextBlock Text="karaokesound"
+                       HorizontalAlignment="Center"/>
+            <Button Content="GENERATE A ONE-TIME KEY"
+                    Command="{Binding GenerateKeyCommand}"
+                    Visibility="{Binding IsVisibleGenerateKeyButton, Converter={StaticResource booleanToVisibilityConverter}}"
+                    Style="{StaticResource generateKeyButton}">
+            </Button>
+        </StackPanel>
+
+        <!--// profile, finished buttons //-->
+        <StackPanel Orientation="Horizontal"
+                        Grid.ColumnSpan="4"
+                        Visibility="{Binding IsTopbarVisible, Converter={StaticResource booleanToVisibilityConverter}}">
+            <Button Content="PROFILE" 
+                        Command="{Binding UpdateViewCommand}"
+                        CommandParameter="Profile"
+                        Margin="1,0,0,0"
+                        Style="{StaticResource topBarButton}" />
+            <Button Content="FINISHED"
+                        Command="{Binding UpdateViewCommand}"
+                        CommandParameter="FinishedTasks"
+                        Margin="1,0,0,0"
+                        Style="{StaticResource topBarButton}" />
+        </StackPanel>
+        
+        <!--// exit, minimalize buttons //-->
+        <StackPanel Orientation="Horizontal"
+                    Grid.Column="3"
+                    HorizontalAlignment="Right">
+            <Button Content="-"
+                    Style="{StaticResource topBarButton}"
+                    Click="minimizeButton_Click"
+                    FontWeight="Bold"
+                    Width="35"
+                    Margin="0,0,1,0"
+                    ToolTip="Minimalize"/>
+            <Button Content="EXIT"
+                    Click="exitButton_Click"
+                    Style="{StaticResource topBarButton}"
+                    Margin="0,0,1,0"/>
+        </StackPanel>
+        <!--// END OF NAVIGATION BAR //-->
+
+        <!--// TODO //-->
+        <TextBlock Text="TODO"
+                   FontSize="45"
+                   HorizontalAlignment="Center"
+                   Foreground="White"
+                   Grid.Row="1"
+                   Grid.Column="1"
+                   Grid.ColumnSpan="2"
+                   FontFamily="Rubik"
+                   Margin="0,10,0,0" />
+
+        <!--// GENERATED KEY TEXTBLOCK //-->
+        <TextBlock Grid.Column="1"
+                   Grid.ColumnSpan="2"
+                   Grid.Row="1"
+                   DataContext="{Binding LoginPanelVM}"
+                   Text="{Binding GeneratedKey, UpdateSourceTrigger=PropertyChanged}"
+                   Visibility="{Binding IsVisibleGeneratedKey, Converter={StaticResource booleanToVisibilityConverter}}"
+                   FontSize="30"
+                   Foreground="#FFD700"
+                   Background="Transparent"
+                   Height="30"
+                   Margin="0,30,0,0"
+                   HorizontalAlignment="Center"
+                   Opacity="0.9"/>
+
+        <!--// SLOGAN //-->
+        <StackPanel Grid.Column="1"
+                    Grid.Row="1"
+                    Grid.RowSpan="2"
+                    Grid.ColumnSpan="2"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    TextBlock.Foreground="#9ab097">
+            <TextBlock Text="your _everything"
+                       FontSize="23"
+                       FontFamily="Rubik" />
+            <TextBlock Text="your _happiness"
+                       FontSize="16"
+                       TextAlignment="Center"
+                       Margin="0,15,0,0"
+                       FontFamily="Rubik"/>
+            <TextBlock Text="your _dreams"
+                       FontSize="12"
+                       Margin="0,15,0,0"
+                       FontFamily="Rubik"
+                       TextAlignment="Center"/>
+            <TextBlock Text="your _goals"
+                       FontSize="8"
+                       Margin="0,15,0,0"
+                       FontFamily="Rubik"
+                       TextAlignment="Center"/>
+        </StackPanel>
+
+        <!--// LOGIN //-->
+        <TextBlock Text="L O G I N"
+                   Grid.Column="1"
+                   Grid.ColumnSpan="2"
+                   Grid.Row="2"
+                   Foreground="White"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Bottom"
+                   Margin="0,0,0,10"
+                   FontSize="25"/>
+
+        <!--// LOGIN BOX //-->
+        <Border Grid.Column="1"
+                Grid.ColumnSpan="2"
+                Grid.Row="3"
+                Background="#1c2833"
+                CornerRadius="6"
+                BorderThickness="1"
+                BorderBrush="#d3d3d3"/>
+        <StackPanel Grid.Row="3"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center"
+                    Grid.Column="1"
+                    Grid.ColumnSpan="2">
+
+            <!--// username, password boxes //-->
+            <StackPanel DataContext="{Binding LoginPanelVM}">
+                <TextBlock Text="_username"
+                       FontSize="15"
+                       Margin="0,0,0,2"
+                       Foreground="#e8e8e8"/>
+                <TextBox Width="220"
+                         Height="25"
+                         Background="#24496f"
+                         BorderThickness="2"
+                         BorderBrush="#9ab097"
+                         Foreground="White"
+                         VerticalContentAlignment="Center"
+                         Validation.ErrorTemplate="{StaticResource errorTemplate}">
+                    <TextBox.Text>
+                        <Binding Path="Username"
+                                 ValidatesOnDataErrors="True"
+                                 UpdateSourceTrigger="LostFocus">
+                            <Binding.ValidationRules>
+                                <local:MinimumCharacterRule
+                                    MinimumCharacters="3"
+                                    MaximumCharacters="10"/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+                <TextBlock Text="_key"
+                       FontSize="15"
+                       Margin="0,10,0,2"
+                       Foreground="White" />
+                <TextBox Width="220"
+                         Height="25"
+                         Background="#24496f"
+                         BorderThickness="2"
+                         BorderBrush="#9ab097"
+                         Foreground="#FFD700"
+                         VerticalContentAlignment="Center"
+                         Text="{Binding Key, UpdateSourceTrigger=PropertyChanged}" />
+            </StackPanel>
+            
+            <!--// buttons //-->
+            <StackPanel Margin="0,5,0,0">
+                
+                <!--// login button //-->
+                <Button Content="LOG IN"
+                        Command="{Binding LoginCommand}"
+                        Style="{StaticResource topBarButton}"
+                        Width="220"/>
+
+                <!--// forgot password, sign up //-->
+                <StackPanel Orientation="Horizontal"
+                            Margin="0,10,0,0">
+                    <TextBlock Text="forgot password?"
+                               Foreground="White"/>
+                    <TextBlock Text="sign up"
+                               Foreground="White"
+                               Margin="80,0,0,0"/>
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+
+        <!--// CONTENT CONTROL //-->
+        <ContentControl Content="{Binding SelectedViewModel}"
+                        Grid.ColumnSpan="4"
+                        Grid.Row="1"
+                        Grid.RowSpan="4" />
+    </Grid>
+</Window>

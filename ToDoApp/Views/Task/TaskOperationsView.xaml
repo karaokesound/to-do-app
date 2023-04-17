@@ -1,0 +1,226 @@
+﻿<UserControl x:Class="ToDoApp.Views.TaskOperationsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:components="clr-namespace:ToDoApp.Components"
+             xmlns:local="clr-namespace:ToDoApp"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800"
+             FontFamily="Rubik">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <BooleanToVisibilityConverter x:Key="booleanToVisibilityConverter" />
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!--// BACKGROUND //-->
+        <Border Grid.ColumnSpan="2"
+                CornerRadius="6"
+                BorderThickness="0.5"
+                BorderBrush="#d3d3d3">
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,5">
+                    <GradientStop Color="#004561" Offset="0.0" />
+                    <GradientStop Color="#343157" Offset="0.30" />
+                    <GradientStop Color="tomato" Offset="0.77" />
+                </LinearGradientBrush>
+            </Border.Background>
+        </Border>
+
+        <!--// LEFT SIDE //-->
+        <Grid Margin="15">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="0.85*" />
+            </Grid.RowDefinitions>
+
+            <!--// TEXTBOXES, BUTTONS //-->
+            <StackPanel TextBlock.Foreground="White">
+                <!--// title, description, value //-->
+                <TextBlock Text="Title"
+                           FontSize="15" />
+                <TextBox Height="30"
+                         VerticalContentAlignment="Center"
+                         FontSize="13"
+                         Foreground="White"
+                         Margin="0,3,0,12"
+                         Background="#24496f"
+                         BorderThickness="1.5"
+                         BorderBrush="#0b5345"
+                         Validation.ErrorTemplate="{StaticResource titleAnnotation}">
+                    <TextBox.Text>
+                        <Binding Path="NewTaskViewModel.TaskTitle"
+                                 ValidatesOnDataErrors="True"
+                                 UpdateSourceTrigger="PropertyChanged">
+                            <Binding.ValidationRules>
+                                <local:TitleAnnotation />
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+                <TextBlock Text="Description"
+                           FontSize="15" />
+                <TextBox Height="60"
+                         FontSize="13"
+                         Margin="0,3,0,12"
+                         Background="#24496f"
+                         BorderThickness="1.5"
+                         Foreground="White"
+                         BorderBrush="#0b5345"
+                         TextWrapping="Wrap"
+                         Validation.ErrorTemplate="{StaticResource titleAnnotation}">
+                    <TextBox.Text>
+                        <Binding Path="NewTaskViewModel.TaskDescription"
+                                 ValidatesOnDataErrors="True"
+                                 UpdateSourceTrigger="PropertyChanged">
+                            <Binding.ValidationRules>
+                                <local:DescriptionAnnotation />
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+                <TextBlock Text="Value"
+                           FontSize="15"
+                           Margin="0,0,0,3"/>
+                <!--// value buttons //-->
+                <StackPanel Orientation="Horizontal">
+                    <Button Content="1"
+                            Width="30"
+                            Margin="0,0,5,0"
+                            Background="CadetBlue"/>
+                    <Button Content="2"
+                            Width="30"
+                            Margin="0,0,5,0"
+                            Background="Orange"/>
+                    <Button Content="3"
+                            Width="30"
+                            Background="Red"/>
+                </StackPanel>
+                
+                <!--// add, calendar buttons //-->
+                <StackPanel Orientation="Horizontal"
+                            Margin="10,10,0,0">
+                    <Button Content="Add"
+                            Style="{StaticResource topBarButton}"
+                            Command="{Binding CreateTaskCommand}"
+                            HorizontalAlignment="Left"
+                            Margin="0,0,10,0"/>
+                    <Button Content="Calendar"
+                            Style="{StaticResource topBarButton2}"
+                            HorizontalAlignment="Center"
+                            Margin="0,0,10,0"/>
+                </StackPanel>
+            </StackPanel>
+
+            <!--// SELECT TASK MENU //-->
+            <Grid Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.7*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="0.7*" />
+                </Grid.RowDefinitions>
+
+                <!--// background //--> 
+                <Border Grid.RowSpan="3"
+                        Background="White"
+                        Opacity="0.1"
+                        CornerRadius="8">
+                </Border>
+                <Border Grid.RowSpan="3"
+                        BorderThickness="0.5"
+                        BorderBrush="White"
+                        CornerRadius="8" />
+                <TextBlock Text="S E L E C T   Y O U R   T A S K"
+                           HorizontalAlignment="Center"
+                           Margin="0,20,0,0"
+                           FontWeight="SemiBold"
+                           FontSize="13"
+                           Foreground="White"/>
+
+                <!--// textboxes, buttons //-->
+                <StackPanel Grid.Row="1"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            Orientation="Horizontal">
+
+                    <!--// textboxes //-->
+                    <StackPanel TextBlock.FontSize="14"
+                                VerticalAlignment="Center">
+                        <TextBox Width="150"
+                                 Visibility="{Binding IsVisibleTaskEditor, Converter={StaticResource booleanToVisibilityConverter}}"
+                                 Text="{Binding EditTaskViewModel.TaskTitle,UpdateSourceTrigger=PropertyChanged}"
+                                 Margin="0,0,0,3"
+                                 Background="#b0bbe1"
+                                 FontWeight="Bold"
+                                 BorderBrush="White"/>
+                        <TextBox Width="150"
+                                 Visibility="{Binding IsVisibleTaskEditor, Converter={StaticResource booleanToVisibilityConverter}}"
+                                 Text="{Binding EditTaskViewModel.TaskDescription, UpdateSourceTrigger=PropertyChanged}"
+                                 Margin="0,0,0,3"
+                                 Background="#b0bbe1"
+                                 BorderBrush="White"/>
+                        <TextBox Width="150"
+                                 Visibility="{Binding IsVisibleTaskEditor, Converter={StaticResource booleanToVisibilityConverter}}"
+                                 Text="{Binding EditTaskViewModel.TaskValue, UpdateSourceTrigger=PropertyChanged}"
+                                 Background="#b0bbe1"
+                                 BorderBrush="White"/>
+                    </StackPanel>
+
+                    <!--// save, exit buttons //-->
+                    <StackPanel>
+                        <Button Content="_SAVE"
+                                Style="{StaticResource saveTaskButton}"
+                                Command="{Binding SaveChangesCommand}"
+                                Visibility="{Binding IsVisibleTaskEditor, Converter={StaticResource booleanToVisibilityConverter}}"
+                                Margin="10,0,0,10"/>
+                        <Button Content="_EXIT"
+                                Style="{StaticResource exitTaskButton}"
+                                Command="{Binding ExitTaskEditingCommand}"
+                                Visibility="{Binding IsVisibleTaskEditor, Converter={StaticResource booleanToVisibilityConverter}}"
+                                Margin="10,0,0,0" />
+                    </StackPanel>
+                </StackPanel>
+
+                <!--// edit, remove buttons //-->
+                <StackPanel VerticalAlignment="Center"
+                            HorizontalAlignment="Center"
+                            Grid.Row="2"
+                            Orientation="Horizontal">
+                    <Button Content="_EDIT"
+                            Style="{StaticResource editTaskButton}"
+                            Command="{Binding EditTaskCommand}"
+                            Margin="0,0,5,0" />
+                    <Button Content="_REMOVE"
+                            Style="{StaticResource editTaskButton}"
+                            Command="{Binding RemoveTaskCommand}"
+                            Margin="5,0,0,0" />
+                </StackPanel>
+            </Grid>
+        </Grid>
+
+        <!--// RIGHT SIDE //-->
+        <Grid Grid.Column="1"
+              DataContext="{Binding}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="0.2*" />
+            </Grid.RowDefinitions>
+            <components:NewTasksListview />
+
+            <!--// done //-->
+            <Button Grid.Row="1"
+                    Content="Done"
+                    Style="{StaticResource topBarButton}"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center"
+                    Command="{Binding FinishTaskCommand}"
+                    Width="300"/>
+        </Grid>
+    </Grid>
+</UserControl>

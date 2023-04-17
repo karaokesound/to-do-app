@@ -1,0 +1,37 @@
+﻿<UserControl x:Class="ToDoApp.Components.CategoryTasksListview"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ToDoApp.Components"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <BooleanToVisibilityConverter x:Key="booleanToVisibilityConverter" />
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid>
+        <!--// CATEGORYTASKS LISTVIEW //-->
+        <ListView Visibility="{Binding IsVisibleListview, Converter={StaticResource booleanToVisibilityConverter}}"
+                  ItemsSource="{Binding CategoryTasksList,UpdateSourceTrigger=PropertyChanged}"
+                  Width="300"
+                  Background="#566779"
+                  Foreground="White"
+                  HorizontalAlignment="Left"
+                  BorderThickness="2"
+                  BorderBrush="#1e4670">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <TextBlock Text="{Binding TaskTitle,UpdateSourceTrigger=PropertyChanged}"
+                                   Visibility="{Binding IsAnyTask, Converter={StaticResource booleanToVisibilityConverter}}"/>
+                        <TextBlock Text="{Binding TaskDescription,UpdateSourceTrigger=PropertyChanged}"
+                                   Visibility="{Binding IsAnyTask, Converter={StaticResource booleanToVisibilityConverter}}"/>
+                        <TextBlock Text="{Binding NoTasks,UpdateSourceTrigger=PropertyChanged}" />
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+</UserControl>

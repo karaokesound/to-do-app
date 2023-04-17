@@ -1,0 +1,40 @@
+﻿<UserControl x:Class="ToDoApp.Components.CategoriesListview"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ToDoApp.Components"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <!--// LISTVIEW //-->
+        <ListView x:Name="categoryListview"
+                  ItemsSource="{Binding CategoryList, UpdateSourceTrigger=PropertyChanged}"
+                  Background="#566779"
+                  Width="320"
+                  SelectedItem="{Binding SelectedCategory, UpdateSourceTrigger=PropertyChanged}"
+                  HorizontalAlignment="Left"
+                  BorderThickness="2"
+                  BorderBrush="#1e4670">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel TextBlock.FontFamily="Rubik"
+                                VerticalAlignment="Center"
+                                Margin="0,5,0,0"
+                                Grid.Column="0">
+                        <TextBlock Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"
+                                   Margin="4,5,4,0"
+                                   FontSize="18"
+                                   Foreground="White"
+                                   VerticalAlignment="Top"/>
+                        <TextBlock Text="{Binding Hashtag, UpdateSourceTrigger=PropertyChanged}"
+                                   Margin="4,0,0,7"
+                                   FontSize="14"
+                                   Foreground="#ffc107"
+                                   VerticalAlignment="Center"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+</UserControl>

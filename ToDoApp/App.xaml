@@ -1,0 +1,84 @@
+﻿<Application x:Class="ToDoApp.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:viewmodels="clr-namespace:ToDoApp.ViewModels"
+             xmlns:views="clr-namespace:ToDoApp.Views">
+    <Application.Resources>
+        <ResourceDictionary>
+            
+            <!--// STYLES //-->
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Styles/Buttons/TopBarButton.xaml" />
+                <ResourceDictionary Source="Styles/Buttons/ActionButton.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+            <!--// ANNOTATIONS //-->
+            <!--// error template //-->
+            <ControlTemplate x:Key="errorTemplate">
+                <Border BorderBrush="Red">
+                    <Grid>
+                        <AdornedElementPlaceholder />
+                        <TextBlock Text="{Binding [0].ErrorContent}"
+                                   Foreground="Red"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Right"
+                                   Margin="0,0,4,0" />
+                    </Grid>
+                </Border>
+            </ControlTemplate>
+            
+            <!--// title annotation //-->
+            <ControlTemplate x:Key="titleAnnotation">
+                <Border>
+                    <Grid>
+                        <AdornedElementPlaceholder />
+                        <TextBlock Text="{Binding [0].ErrorContent}"
+                                   Foreground="Black"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Right"
+                                   Margin="0,0,6,0"
+                                   FontStyle="Italic"
+                                   Opacity="0.75"/>
+                    </Grid>
+                </Border>
+            </ControlTemplate>
+            
+            <!--// description annotation //-->
+            <ControlTemplate x:Key="descriptionAnnotation">
+                <Border>
+                    <Grid>
+                        <AdornedElementPlaceholder />
+                        <TextBlock Text="{Binding [0].ErrorContent}"
+                                   Foreground="Black"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Right"
+                                   Margin="0,0,6,0"
+                                   FontStyle="Italic"
+                                   Opacity="0.75" />
+                    </Grid>
+                </Border>
+            </ControlTemplate>
+
+            <!--// USER CONTROLS (VIEW NAVIGATION)//-->
+            <DataTemplate DataType="{x:Type viewmodels:ProfileViewModel}">
+                <views:ProfileView />
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewmodels:TaskOperationsViewModel}">
+                <views:TaskOperationsView />
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewmodels:FinishedTasksViewModel}">
+                <views:FinishedTasksView />
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewmodels:CategoriesPanelViewModel}">
+                <views:CategoriesView />
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewmodels:SettingsViewModel}">
+                <views:SettingsView />
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewmodels:AccountPanelViewModel}">
+                <views:AccountPanelView />
+            </DataTemplate>
+            
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>
