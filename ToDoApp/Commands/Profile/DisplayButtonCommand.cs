@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using ToDoApp.Models;
@@ -15,15 +16,19 @@ namespace ToDoApp.Commands.Profile
         private readonly CategoriesPanelViewModel _categoriesPanelVM;
         public override void Execute(object parameter)
         {
-            if (_categoriesPanelVM.IsVisibleCategoryInfo == false)
+            if (_categoriesPanelVM.SelectedCategory.CategoryId != Guid.Empty && _categoriesPanelVM.SelectedCategory.CategoryId != null)
             {
-                _categoriesPanelVM.IsVisibleCategoryInfo = true;
-                GetCategoryTaskList();
-                _categoriesPanelVM.IsVisibleAddPanel = false;
-                _categoriesPanelVM.IsVisibleListview = false;
+                if (_categoriesPanelVM.IsVisibleCategoryInfo == false)
+                {
+                    GetCategoryTaskList();
+                    _categoriesPanelVM.IsVisibleCategoryInfo = true;
+                    _categoriesPanelVM.IsVisibleAddPanel = false;
+                    _categoriesPanelVM.IsVisibleListview = false;
+                    _categoriesPanelVM.SelectedCategory.CategoryId = Guid.Empty;
+                }
+                else _categoriesPanelVM.IsVisibleCategoryInfo = false;
             }
-            else _categoriesPanelVM.IsVisibleCategoryInfo = false;
-
+            else return;
         }
 
         public DisplayButtonCommand(CategoriesPanelViewModel categoriesPanelVM)

@@ -36,17 +36,21 @@ namespace ToDoApp.Commands.Profile
             List<TaskModel> taskModels = new List<TaskModel>();
 
             Guid selectedCategoryId = _categoriesPanelVM.SelectedCategory.CategoryId;
-            using (ToDoAppDbContext context = new ToDoAppDbContext())
+            if (selectedCategoryId != Guid.Empty && selectedCategoryId != null)
             {
-                List<CategoryTaskModel> categoryTasksListModel = context.CategoryTasks.Where(category => category.CategoryGuidId == selectedCategoryId).ToList();
-                foreach (CategoryTaskModel categoryTaskModel in categoryTasksListModel)
+                using (ToDoAppDbContext context = new ToDoAppDbContext())
                 {
-                    Guid categoryTaskId = categoryTaskModel.TaskGuidId;
-                    TaskModel taskModel = context.Tasks.FirstOrDefault(task => task.GuidId == categoryTaskId);
-                    taskModels.Add(taskModel);
+                    List<CategoryTaskModel> categoryTasksListModel = context.CategoryTasks.Where(category => category.CategoryGuidId == selectedCategoryId).ToList();
+                    foreach (CategoryTaskModel categoryTaskModel in categoryTasksListModel)
+                    {
+                        Guid categoryTaskId = categoryTaskModel.TaskGuidId;
+                        TaskModel taskModel = context.Tasks.FirstOrDefault(task => task.GuidId == categoryTaskId);
+                        taskModels.Add(taskModel);
+                    }
                 }
+                _categoriesPanelVM.GetCategoryTaskList(taskModels);
             }
-            _categoriesPanelVM.GetCategoryTaskList(taskModels);
+            else return;
         }
     }
 }
