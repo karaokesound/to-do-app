@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Windows.Input;
 using ToDoApp.Commands;
+using ToDoApp.Commands.Tasks;
 using ToDoApp.Models;
 using ToDoApp.Services;
 using ToDoAppDataAccess;
@@ -10,26 +11,18 @@ namespace ToDoApp.ViewModels
 {
     public class TaskOperationsViewModel : BaseViewModel
     {
+        private BaseViewModel _selectedVM;
+        public BaseViewModel SelectedVM
+        {
+            get { return _selectedVM; }
+            set
+            {
+                _selectedVM = value;
+                OnPropertyChanged(nameof(SelectedVM));
+            }
+        }
+
         private TaskViewModel _newTaskViewModel;
-
-        private TaskViewModel _editTaskViewModel;
-
-        private TaskViewModel _selectedTask;
-
-        private ObservableCollection<TaskViewModel> _tasksList;
-
-        private bool _isCompleted;
-
-        private bool _isVisibleTaskEditor;
-
-        private bool _isMoreThanOneTask;
-        public ICommand CreateTaskCommand { get; }
-        public ICommand FinishTaskCommand { get; }
-        public ICommand RemoveTaskCommand { get; }
-        public ICommand EditTaskCommand { get; }
-        public ICommand SaveChangesCommand { get; }
-        public ICommand ExitTaskEditingCommand { get; }
-
         public TaskViewModel NewTaskViewModel
         {
             get { return _newTaskViewModel; }
@@ -39,7 +32,8 @@ namespace ToDoApp.ViewModels
                 OnPropertyChanged(nameof(NewTaskViewModel));
             }
         }
-        
+
+        private TaskViewModel _editTaskViewModel;
         public TaskViewModel EditTaskViewModel
         {
             get { return _editTaskViewModel; }
@@ -50,6 +44,7 @@ namespace ToDoApp.ViewModels
             }
         }
 
+        private TaskViewModel _selectedTask;
         public TaskViewModel SelectedTask
         {
             get { return _selectedTask; }
@@ -59,7 +54,8 @@ namespace ToDoApp.ViewModels
                 OnPropertyChanged(nameof(SelectedTask));
             }
         }
-       
+
+        private ObservableCollection<TaskViewModel> _tasksList;
         public ObservableCollection<TaskViewModel> TasksList
         {
             get { return _tasksList; }
@@ -70,13 +66,7 @@ namespace ToDoApp.ViewModels
             }
         }
 
-        public int Counter 
-        { 
-            get { return _tasksList.Count; } 
-            set { OnPropertyChanged(nameof(Counter)); } 
-        }
-
-        #region Booleans properties
+        private bool _isCompleted;
         public bool IsCompleted
         {
             get { return _isCompleted; }
@@ -86,7 +76,8 @@ namespace ToDoApp.ViewModels
                 OnPropertyChanged(nameof(IsCompleted));
             }
         }
-       
+
+        private bool _isVisibleTaskEditor;
         public bool IsVisibleTaskEditor
         {
             get { return _isVisibleTaskEditor; }
@@ -96,7 +87,8 @@ namespace ToDoApp.ViewModels
                 OnPropertyChanged(nameof(IsVisibleTaskEditor));
             }
         }
-      
+
+        private bool _isMoreThanOneTask;
         public bool IsMoreThanOneTask
         {
             get { return _isMoreThanOneTask; }
@@ -106,7 +98,26 @@ namespace ToDoApp.ViewModels
                 OnPropertyChanged(nameof(IsMoreThanOneTask));
             }
         }
-        #endregion
+
+        public int Counter
+        {
+            get { return _tasksList.Count; }
+            set { OnPropertyChanged(nameof(Counter)); }
+        }
+
+        public ICommand UpdateTasksViewCommand { get; }
+
+        public ICommand CreateTaskCommand { get; }
+
+        public ICommand FinishTaskCommand { get; }
+
+        public ICommand RemoveTaskCommand { get; }
+
+        public ICommand EditTaskCommand { get; }
+
+        public ICommand SaveChangesCommand { get; }
+
+        public ICommand ExitTaskEditingCommand { get; }
 
         public TaskOperationsViewModel()
         {
@@ -116,6 +127,7 @@ namespace ToDoApp.ViewModels
             SaveChangesCommand = new SaveChangesCommand(this);
             ExitTaskEditingCommand = new ExitTaskEditingCommand(this);
             EditTaskCommand = new EditTaskCommand(this);
+            UpdateTasksViewCommand = new UpdateTasksViewCommand(this);
             TasksList = new ObservableCollection<TaskViewModel>();
             NewTaskViewModel = new TaskViewModel();
             EditTaskViewModel = new TaskViewModel();

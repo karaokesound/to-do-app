@@ -85,13 +85,14 @@
                 CornerRadius="6" />
 
         <!--// NAVIGATION BAR //-->
-        <!--// key //-->
         <StackPanel Grid.ColumnSpan="4"
                     VerticalAlignment="Center"
                     TextBlock.Foreground="White"
                     DataContext="{Binding LoginPanelVM}">
             <TextBlock Text="karaokesound"
                        HorizontalAlignment="Center"/>
+            
+            <!--// generate key button //-->
             <Button Content="GENERATE A ONE-TIME KEY"
                     Command="{Binding GenerateKeyCommand}"
                     Visibility="{Binding IsVisibleGenerateKeyButton, Converter={StaticResource booleanToVisibilityConverter}}"
@@ -99,18 +100,28 @@
             </Button>
         </StackPanel>
 
-        <!--// profile, finished buttons //-->
+        <!--// account, tasks, categories, settings buttons //-->
         <StackPanel Orientation="Horizontal"
                         Grid.ColumnSpan="4"
                         Visibility="{Binding IsTopbarVisible, Converter={StaticResource booleanToVisibilityConverter}}">
-            <Button Content="PROFILE" 
+            <Button Content="Account" 
                         Command="{Binding UpdateViewCommand}"
-                        CommandParameter="Profile"
+                        CommandParameter="Account"
                         Margin="1,0,0,0"
                         Style="{StaticResource topBarButton}" />
-            <Button Content="FINISHED"
+            <Button Content="Tasks"
                         Command="{Binding UpdateViewCommand}"
-                        CommandParameter="FinishedTasks"
+                        CommandParameter="Tasks"
+                        Margin="1,0,0,0"
+                        Style="{StaticResource topBarButton}" />
+            <Button Content="Categories"
+                        Command="{Binding UpdateViewCommand}"
+                        CommandParameter="Categories"
+                        Margin="1,0,0,0"
+                        Style="{StaticResource topBarButton}" />
+            <Button Content="Settings"
+                        Command="{Binding UpdateViewCommand}"
+                        CommandParameter="Settings"
                         Margin="1,0,0,0"
                         Style="{StaticResource topBarButton}" />
         </StackPanel>

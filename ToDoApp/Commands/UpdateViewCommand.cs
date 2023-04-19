@@ -14,17 +14,13 @@ namespace ToDoApp.Commands
 
         public override void Execute(object parameter)
         {
-            if (parameter.ToString() == "Profile")
+            if (parameter.ToString() == "Account")
             {
-                viewModel.SelectedViewModel = new ProfileViewModel();
+                viewModel.SelectedViewModel = new AccountPanelViewModel();
             }
             else if (parameter.ToString() == "Tasks")
             {
                 viewModel.SelectedViewModel = new TaskOperationsViewModel();
-            }
-            else if (parameter.ToString() == "FinishedTasks")
-            {
-                viewModel.SelectedViewModel = new FinishedTasksViewModel();
             }
             else if (parameter.ToString() == "Categories")
             {
@@ -34,10 +30,7 @@ namespace ToDoApp.Commands
             {
                 viewModel.SelectedViewModel = new SettingsViewModel();
             }
-            else if (parameter.ToString() == "Account")
-            {
-                viewModel.SelectedViewModel = new AccountPanelViewModel();
-            }
+          
         }
     }
 }

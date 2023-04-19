@@ -42,6 +42,7 @@
 
             <!--// TEXTBOXES, BUTTONS //-->
             <StackPanel TextBlock.Foreground="White">
+                
                 <!--// title, description, value //-->
                 <TextBlock Text="Title"
                            FontSize="15" />
@@ -103,7 +104,7 @@
                             Background="Red"/>
                 </StackPanel>
                 
-                <!--// add, calendar buttons //-->
+                <!--// add, calendar, finished //-->
                 <StackPanel Orientation="Horizontal"
                             Margin="10,10,0,0">
                     <Button Content="Add"
@@ -113,6 +114,12 @@
                             Margin="0,0,10,0"/>
                     <Button Content="Calendar"
                             Style="{StaticResource topBarButton2}"
+                            HorizontalAlignment="Center"
+                            Margin="0,0,10,0"/>
+                    <Button Content="Finished"
+                            Command="{Binding UpdateTasksViewCommand}"
+                            CommandParameter="FinishedTasks"
+                            Style="{StaticResource topBarButton}"
                             HorizontalAlignment="Center"
                             Margin="0,0,10,0"/>
                 </StackPanel>
@@ -222,5 +229,9 @@
                     Command="{Binding FinishTaskCommand}"
                     Width="300"/>
         </Grid>
+
+        <!--// CONTENT CONTROL //-->
+        <ContentControl Content="{Binding SelectedVM}"
+                        Grid.ColumnSpan="2" />
     </Grid>
 </UserControl>

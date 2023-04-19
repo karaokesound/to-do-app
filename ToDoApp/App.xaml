@@ -60,9 +60,6 @@
             </ControlTemplate>
 
             <!--// USER CONTROLS (VIEW NAVIGATION)//-->
-            <DataTemplate DataType="{x:Type viewmodels:ProfileViewModel}">
-                <views:ProfileView />
-            </DataTemplate>
             <DataTemplate DataType="{x:Type viewmodels:TaskOperationsViewModel}">
                 <views:TaskOperationsView />
             </DataTemplate>

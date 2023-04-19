@@ -65,33 +65,33 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Commands\View\GenerateKeyCommand.cs" />
-    <Compile Include="Commands\View\LoginCommand.cs" />
-    <Compile Include="Commands\Profile\AddCategoryCommand.cs" />
-    <Compile Include="Commands\Base\CommandBase.cs" />
-    <Compile Include="Commands\Profile\DisplayAddPanelCommand.cs" />
-    <Compile Include="Commands\Profile\DisplayButtonCommand.cs" />
-    <Compile Include="Commands\Profile\DisplayTaskListviewCommand.cs" />
-    <Compile Include="Commands\Profile\RemoveCategoryCommand.cs" />
-    <Compile Include="Commands\Profile\ShowCalendarCommand.cs" />
-    <Compile Include="Commands\Task\CreateTaskCommand.cs" />
-    <Compile Include="Commands\Profile\DisplayCategoriesCommand.cs" />
-    <Compile Include="Commands\Task\EditTaskCommand.cs" />
-    <Compile Include="Commands\Task\ExitTaskEditingCommand.cs" />
-    <Compile Include="Commands\Task\FinishTaskCommand.cs" />
-    <Compile Include="Commands\Task\RemoveTaskCommand.cs" />
-    <Compile Include="Commands\Task\SaveChangesCommand.cs" />
-    <Compile Include="Commands\View\UpdateViewCommand.cs" />
-    <Compile Include="Components\Profile\CategoriesListview.xaml.cs">
+    <Compile Include="Commands\Login\GenerateKeyCommand.cs" />
+    <Compile Include="Commands\Login\LoginCommand.cs" />
+    <Compile Include="Commands\Categories\AddCategoryCommand.cs" />
+    <Compile Include="Commands\CommandBase.cs" />
+    <Compile Include="Commands\Categories\DisplayAddPanelCommand.cs" />
+    <Compile Include="Commands\Categories\DisplayButtonCommand.cs" />
+    <Compile Include="Commands\Categories\DisplayTaskListviewCommand.cs" />
+    <Compile Include="Commands\Categories\RemoveCategoryCommand.cs" />
+    <Compile Include="Commands\Tasks\CreateTaskCommand.cs" />
+    <Compile Include="Commands\Categories\DisplayCategoriesCommand.cs" />
+    <Compile Include="Commands\Tasks\EditTaskCommand.cs" />
+    <Compile Include="Commands\Tasks\ExitTaskEditingCommand.cs" />
+    <Compile Include="Commands\Tasks\FinishTaskCommand.cs" />
+    <Compile Include="Commands\Tasks\RemoveTaskCommand.cs" />
+    <Compile Include="Commands\Tasks\SaveChangesCommand.cs" />
+    <Compile Include="Commands\Tasks\UpdateTasksViewCommand.cs" />
+    <Compile Include="Commands\UpdateViewCommand.cs" />
+    <Compile Include="Views\Components\Categories\CategoriesListview.xaml.cs">
       <DependentUpon>CategoriesListview.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Components\Profile\CategoryTasksListview.xaml.cs">
+    <Compile Include="Views\Components\Categories\CategoryTasksListview.xaml.cs">
       <DependentUpon>CategoryTasksListview.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Components\Task\FinishedTasksListview.xaml.cs">
+    <Compile Include="Views\Components\Tasks\FinishedTasksListview.xaml.cs">
       <DependentUpon>FinishedTasksListview.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Components\Task\NewTasksListview.xaml.cs">
+    <Compile Include="Views\Components\Tasks\NewTasksListview.xaml.cs">
       <DependentUpon>NewTasksListview.xaml</DependentUpon>
     </Compile>
     <Compile Include="DataValidation\DescriptionAnnotation.cs" />
@@ -99,62 +99,58 @@
     <Compile Include="Services\MappingService.cs" />
     <Compile Include="Services\UsernameStore.cs" />
     <Compile Include="DataValidation\TitleAnnotation.cs" />
-    <Compile Include="ViewModels\View\LoginPanelViewModel.cs" />
-    <Compile Include="ViewModels\Profile\AccountPanelViewModel.cs" />
-    <Compile Include="ViewModels\Base\BaseViewModel.cs" />
-    <Compile Include="ViewModels\Profile\CategoriesPanelViewModel.cs" />
-    <Compile Include="ViewModels\Profile\CategoryViewModel.cs" />
-    <Compile Include="ViewModels\Profile\SettingsViewModel.cs" />
-    <Compile Include="ViewModels\Task\FinishedTasksViewModel.cs" />
-    <Compile Include="ViewModels\View\MainViewModel.cs" />
-    <Compile Include="ViewModels\Profile\ProfileViewModel.cs" />
-    <Compile Include="ViewModels\Task\TaskOperationsViewModel.cs" />
-    <Compile Include="ViewModels\Task\TaskViewModel.cs" />
-    <Compile Include="Views\Profile\AccountPanelView.xaml.cs">
+    <Compile Include="ViewModels\Login\LoginPanelViewModel.cs" />
+    <Compile Include="ViewModels\Account\AccountPanelViewModel.cs" />
+    <Compile Include="ViewModels\BaseViewModel.cs" />
+    <Compile Include="ViewModels\Categories\CategoriesPanelViewModel.cs" />
+    <Compile Include="ViewModels\Categories\CategoryViewModel.cs" />
+    <Compile Include="ViewModels\Settings\SettingsViewModel.cs" />
+    <Compile Include="ViewModels\Tasks\FinishedTasksViewModel.cs" />
+    <Compile Include="ViewModels\MainViewModel.cs" />
+    <Compile Include="ViewModels\Tasks\TaskOperationsViewModel.cs" />
+    <Compile Include="ViewModels\Tasks\TaskViewModel.cs" />
+    <Compile Include="Views\Account\AccountPanelView.xaml.cs">
       <DependentUpon>AccountPanelView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Profile\CategoriesPanelView.xaml.cs">
+    <Compile Include="Views\Categories\CategoriesPanelView.xaml.cs">
       <DependentUpon>CategoriesPanelView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Profile\CategoryView.xaml.cs">
+    <Compile Include="Views\Categories\CategoryView.xaml.cs">
       <DependentUpon>CategoryView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Task\FinishedTasksView.xaml.cs">
+    <Compile Include="Views\Tasks\FinishedTasksView.xaml.cs">
       <DependentUpon>FinishedTasksView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Profile\ProfileView.xaml.cs">
-      <DependentUpon>ProfileView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Profile\SettingsView.xaml.cs">
+    <Compile Include="Views\Settings\SettingsView.xaml.cs">
       <DependentUpon>SettingsView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Task\TaskOperationsView.xaml.cs">
+    <Compile Include="Views\Tasks\TaskOperationsView.xaml.cs">
       <DependentUpon>TaskOperationsView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Task\TaskView.xaml.cs">
+    <Compile Include="Views\Tasks\TaskView.xaml.cs">
       <DependentUpon>TaskView.xaml</DependentUpon>
     </Compile>
-    <Page Include="Components\Profile\CategoriesListview.xaml">
+    <Page Include="Views\Components\Categories\CategoriesListview.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Components\Profile\CategoryTasksListview.xaml">
+    <Page Include="Views\Components\Categories\CategoryTasksListview.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Components\Task\FinishedTasksListview.xaml">
+    <Page Include="Views\Components\Tasks\FinishedTasksListview.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Components\Task\NewTasksListview.xaml">
+    <Page Include="Views\Components\Tasks\NewTasksListview.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\View\LoginPanelView.xaml">
+    <Page Include="Views\Login\LoginPanelView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\View\MainWindow.xaml">
+    <Page Include="Views\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -162,10 +158,10 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Views\View\LoginPanelView.xaml.cs">
+    <Compile Include="Views\Login\LoginPanelView.xaml.cs">
       <DependentUpon>LoginPanelView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\View\MainWindow.xaml.cs">
+    <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
@@ -177,35 +173,31 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Profile\AccountPanelView.xaml">
+    <Page Include="Views\Account\AccountPanelView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Profile\CategoriesPanelView.xaml">
+    <Page Include="Views\Categories\CategoriesPanelView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Profile\CategoryView.xaml">
+    <Page Include="Views\Categories\CategoryView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Task\FinishedTasksView.xaml">
+    <Page Include="Views\Tasks\FinishedTasksView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Profile\ProfileView.xaml">
+    <Page Include="Views\Settings\SettingsView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Profile\SettingsView.xaml">
+    <Page Include="Views\Tasks\TaskOperationsView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Task\TaskOperationsView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\Task\TaskView.xaml">
+    <Page Include="Views\Tasks\TaskView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -237,7 +229,10 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Commands\Account\" />
+    <Folder Include="Commands\Settings\" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ToDoApp.Models\ToDoApp.Models.csproj">
       <Project>{66292857-e8d6-4bcf-a45c-bd4f50f15464}</Project>
