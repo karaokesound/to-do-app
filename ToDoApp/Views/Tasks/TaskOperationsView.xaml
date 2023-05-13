@@ -160,20 +160,20 @@
                     <StackPanel TextBlock.FontSize="14"
                                 VerticalAlignment="Center">
                         <TextBox Width="150"
-                                 Visibility="{Binding IsVisibleTaskEditor, Converter={StaticResource booleanToVisibilityConverter}}"
+                                 Visibility="{Binding IsTaskEditorVisible, Converter={StaticResource booleanToVisibilityConverter}}"
                                  Text="{Binding EditTaskViewModel.TaskTitle,UpdateSourceTrigger=PropertyChanged}"
                                  Margin="0,0,0,3"
                                  Background="#b0bbe1"
                                  FontWeight="Bold"
                                  BorderBrush="White"/>
                         <TextBox Width="150"
-                                 Visibility="{Binding IsVisibleTaskEditor, Converter={StaticResource booleanToVisibilityConverter}}"
+                                 Visibility="{Binding IsTaskEditorVisible, Converter={StaticResource booleanToVisibilityConverter}}"
                                  Text="{Binding EditTaskViewModel.TaskDescription, UpdateSourceTrigger=PropertyChanged}"
                                  Margin="0,0,0,3"
                                  Background="#b0bbe1"
                                  BorderBrush="White"/>
                         <TextBox Width="150"
-                                 Visibility="{Binding IsVisibleTaskEditor, Converter={StaticResource booleanToVisibilityConverter}}"
+                                 Visibility="{Binding IsTaskEditorVisible, Converter={StaticResource booleanToVisibilityConverter}}"
                                  Text="{Binding EditTaskViewModel.TaskValue, UpdateSourceTrigger=PropertyChanged}"
                                  Background="#b0bbe1"
                                  BorderBrush="White"/>
@@ -184,12 +184,12 @@
                         <Button Content="_SAVE"
                                 Style="{StaticResource saveTaskButton}"
                                 Command="{Binding SaveChangesCommand}"
-                                Visibility="{Binding IsVisibleTaskEditor, Converter={StaticResource booleanToVisibilityConverter}}"
+                                Visibility="{Binding IsTaskEditorVisible, Converter={StaticResource booleanToVisibilityConverter}}"
                                 Margin="10,0,0,10"/>
                         <Button Content="_EXIT"
                                 Style="{StaticResource exitTaskButton}"
                                 Command="{Binding ExitTaskEditingCommand}"
-                                Visibility="{Binding IsVisibleTaskEditor, Converter={StaticResource booleanToVisibilityConverter}}"
+                                Visibility="{Binding IsTaskEditorVisible, Converter={StaticResource booleanToVisibilityConverter}}"
                                 Margin="10,0,0,0" />
                     </StackPanel>
                 </StackPanel>

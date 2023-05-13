@@ -45,7 +45,7 @@ namespace ToDoApp.Commands.Profile
                         context.Categories.Remove(removingCategory);
                         context.SaveChanges();
                         _categoriesPanelVM.GetCategories();
-                        _categoriesPanelVM.IsVisibleCategoryInfo = false;
+                        _categoriesPanelVM.IsCategoryInfoVisible = false;
                     }
                     else
                     {

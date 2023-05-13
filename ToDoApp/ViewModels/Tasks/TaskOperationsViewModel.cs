@@ -77,14 +77,14 @@ namespace ToDoApp.ViewModels
             }
         }
 
-        private bool _isVisibleTaskEditor;
-        public bool IsVisibleTaskEditor
+        private bool _isTaskEditorVisible;
+        public bool IsTaskEditorVisible
         {
-            get { return _isVisibleTaskEditor; }
+            get { return _isTaskEditorVisible; }
             set
             {
-                _isVisibleTaskEditor = value;
-                OnPropertyChanged(nameof(IsVisibleTaskEditor));
+                _isTaskEditorVisible = value;
+                OnPropertyChanged(nameof(IsTaskEditorVisible));
             }
         }
 

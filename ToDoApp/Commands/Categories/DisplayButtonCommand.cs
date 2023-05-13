@@ -18,15 +18,14 @@ namespace ToDoApp.Commands.Profile
         {
             if (_categoriesPanelVM.SelectedCategory.CategoryId != Guid.Empty && _categoriesPanelVM.SelectedCategory.CategoryId != null)
             {
-                if (_categoriesPanelVM.IsVisibleCategoryInfo == false)
+                if (_categoriesPanelVM.IsCategoryInfoVisible == false)
                 {
                     GetCategoryTaskList();
-                    _categoriesPanelVM.IsVisibleCategoryInfo = true;
-                    _categoriesPanelVM.IsVisibleAddPanel = false;
-                    _categoriesPanelVM.IsVisibleListview = false;
-                    _categoriesPanelVM.SelectedCategory.CategoryId = Guid.Empty;
+                    _categoriesPanelVM.IsCategoryInfoVisible = true;
+                    _categoriesPanelVM.IsAddPanelVisible = false;
+                    _categoriesPanelVM.IsListviewVisible = false;
                 }
-                else _categoriesPanelVM.IsVisibleCategoryInfo = false;
+                else _categoriesPanelVM.IsCategoryInfoVisible = false;
             }
             else return;
         }

@@ -229,10 +229,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Commands\Account\" />
-    <Folder Include="Commands\Settings\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\ToDoApp.Models\ToDoApp.Models.csproj">
       <Project>{66292857-e8d6-4bcf-a45c-bd4f50f15464}</Project>

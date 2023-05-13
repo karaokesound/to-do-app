@@ -1,21 +1,43 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ToDoApp.ViewModels.Profile
 {
     public class CategoryViewModel : BaseViewModel
     {
         private Guid _categoryId;
-        private string _name;
-        private string _hashtag;
-        private DateTime _categoryDate = DateTime.Now;
+        public Guid CategoryId
+        {
+            get { return _categoryId; }
+            set
+            {
+                _categoryId = value;
+                OnPropertyChanged(nameof(CategoryId));
+            }
+        }
 
-        public Guid CategoryId { get { return _categoryId; } set { _categoryId = value; OnPropertyChanged(nameof(CategoryId)); } }
-        public string Name { get { return _name; } set { _name = value; OnPropertyChanged(nameof(Name)); } }
-        public string Hashtag { get { return _hashtag; } set { _hashtag = value; OnPropertyChanged(nameof(Hashtag)); } }
+        private string _name;
+        public string Name
+        {
+            get { return _name; }
+            set
+            {
+                _name = value;
+                OnPropertyChanged(nameof(Name));
+            }
+        }
+
+        private string _hashtag;
+        public string Hashtag
+        {
+            get { return _hashtag; }
+            set
+            {
+                _hashtag = value;
+                OnPropertyChanged(nameof(Hashtag));
+            }
+        }
+
+        private DateTime _categoryDate = DateTime.Now;
         public DateTime CategoryDate
         {
             get { return _categoryDate; }
@@ -26,6 +48,7 @@ namespace ToDoApp.ViewModels.Profile
                 OnPropertyChanged(nameof(CategoryDateToString));
             }
         }
+
         public string CategoryDateToString
         {
             get
@@ -48,8 +71,7 @@ namespace ToDoApp.ViewModels.Profile
                 return dateOfCategory;
             }
             set { }
-
-    }
+        }
 
     }
 }

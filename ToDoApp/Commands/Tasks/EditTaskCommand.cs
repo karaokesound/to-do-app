@@ -23,7 +23,7 @@ namespace ToDoApp.Commands
 
                 var copiedTaskViewModel = MappingService.ToTaskViewModel(copiedTaskModel);
                 _tasksListVM.EditTaskViewModel = copiedTaskViewModel;
-                _tasksListVM.IsVisibleTaskEditor = true;
+                _tasksListVM.IsTaskEditorVisible = true;
                 _tasksListVM.GetAllTasks();
             }
             else return;

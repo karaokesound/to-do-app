@@ -92,12 +92,12 @@
                 BorderBrush="#1e4670"
                 Margin="10,0,10,10"
                 Opacity="0.05"
-                Visibility="{Binding IsVisibleCategoryInfo, Converter={StaticResource booleanToVisibilityConverter}}">
+                Visibility="{Binding IsCategoryInfoVisible, Converter={StaticResource booleanToVisibilityConverter}}">
         </Border>
         <Grid Grid.Column="1"
               Grid.Row="1"
               Margin="10,0,10,10"
-              Visibility="{Binding IsVisibleCategoryInfo, Converter={StaticResource booleanToVisibilityConverter}}">
+              Visibility="{Binding IsCategoryInfoVisible, Converter={StaticResource booleanToVisibilityConverter}}">
             <Grid.RowDefinitions>
                 <RowDefinition Height="0.5*" />
                 <RowDefinition Height="*" />
@@ -126,7 +126,7 @@
                            Foreground="White" />
                 <ProgressBar Maximum="{Binding TaskCounter, UpdateSourceTrigger=PropertyChanged}"
                              Value="{Binding FinishedTaskCounter, UpdateSourceTrigger=PropertyChanged}"
-                             Visibility="{Binding IsVisibleCategoryInfo, Converter={StaticResource booleanToVisibilityConverter}}"
+                             Visibility="{Binding IsCategoryInfoVisible, Converter={StaticResource booleanToVisibilityConverter}}"
                              Height="6"
                              Width="100"/>
             </StackPanel>
@@ -248,13 +248,13 @@
                 BorderBrush="#1e4670"
                 Background="White"
                 Opacity="0.05"
-                Visibility="{Binding IsVisibleAddPanel, Converter={StaticResource booleanToVisibilityConverter}}">
+                Visibility="{Binding IsAddPanelVisible, Converter={StaticResource booleanToVisibilityConverter}}">
         </Border>
         <!--// panel //-->
         <Grid Grid.Column="1"
               Grid.Row="1"
               Margin="10,0,10,10"
-              Visibility="{Binding IsVisibleAddPanel, Converter={StaticResource booleanToVisibilityConverter}}">
+              Visibility="{Binding IsAddPanelVisible, Converter={StaticResource booleanToVisibilityConverter}}">
             <Grid.RowDefinitions>
                 <RowDefinition Height="0.5*" />
                 <RowDefinition Height="*" />

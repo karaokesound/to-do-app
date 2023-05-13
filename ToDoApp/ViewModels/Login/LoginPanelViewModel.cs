@@ -16,8 +16,8 @@ namespace ToDoApp.ViewModels
             }
         }
 
-        private int _key;
-        public int Key
+        private string _key;
+        public string Key
         {
             get { return _key; }
             set
@@ -27,8 +27,8 @@ namespace ToDoApp.ViewModels
             }
         }
 
-        private int _generatedKey;
-        public int GeneratedKey
+        private string _generatedKey;
+        public string GeneratedKey
         {
             get { return _generatedKey; }
             set
@@ -38,36 +38,33 @@ namespace ToDoApp.ViewModels
             }
         }
 
-        private bool _isVisibleGenerateKeyButton = true;
-        public bool IsVisibleGenerateKeyButton
+        private bool _isGenerateKeyButtonVisible = true;
+        public bool IsGenerateKeyButtonVisible
         {
-            get { return _isVisibleGenerateKeyButton; }
+            get { return _isGenerateKeyButtonVisible; }
             set
             {
-                _isVisibleGenerateKeyButton = value;
-                OnPropertyChanged(nameof(IsVisibleGenerateKeyButton));
+                _isGenerateKeyButtonVisible = value;
+                OnPropertyChanged(nameof(IsGenerateKeyButtonVisible));
             }
         }
 
-        private bool _isVisibleGeneratedKey;
-        public bool IsVisibleGeneratedKey
+        private bool _isGeneratedKeyVisible;
+        public bool IsGeneratedKeyVisible
         {
-            get { return _isVisibleGeneratedKey; }
+            get { return _isGeneratedKeyVisible; }
             set
             {
-                _isVisibleGeneratedKey = value;
-                OnPropertyChanged(nameof(IsVisibleGeneratedKey));
+                _isGeneratedKeyVisible = value;
+                OnPropertyChanged(nameof(IsGeneratedKeyVisible));
             }
         }
 
         public ICommand GenerateKeyCommand { get; }
 
-        public ICommand LoginCommand { get; }
-
         public LoginPanelViewModel()
         {
             GenerateKeyCommand = new GenerateKeyCommand(this);
-            LoginCommand = new LoginCommand(this);
         }
     }
 }

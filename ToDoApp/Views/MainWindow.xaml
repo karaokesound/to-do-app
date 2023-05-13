@@ -95,7 +95,7 @@
             <!--// generate key button //-->
             <Button Content="GENERATE A ONE-TIME KEY"
                     Command="{Binding GenerateKeyCommand}"
-                    Visibility="{Binding IsVisibleGenerateKeyButton, Converter={StaticResource booleanToVisibilityConverter}}"
+                    Visibility="{Binding IsGenerateKeyButtonVisible, Converter={StaticResource booleanToVisibilityConverter}}"
                     Style="{StaticResource generateKeyButton}">
             </Button>
         </StackPanel>
@@ -161,7 +161,7 @@
                    Grid.Row="1"
                    DataContext="{Binding LoginPanelVM}"
                    Text="{Binding GeneratedKey, UpdateSourceTrigger=PropertyChanged}"
-                   Visibility="{Binding IsVisibleGeneratedKey, Converter={StaticResource booleanToVisibilityConverter}}"
+                   Visibility="{Binding IsGeneratedKeyVisible, Converter={StaticResource booleanToVisibilityConverter}}"
                    FontSize="30"
                    Foreground="#FFD700"
                    Background="Transparent"

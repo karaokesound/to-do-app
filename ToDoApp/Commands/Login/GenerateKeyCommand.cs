@@ -10,9 +10,9 @@ namespace ToDoApp.Commands
         public override void Execute(object parameter)
         {
             Random randomKey = new Random();
-            int randomKeyInt = randomKey.Next(100, 999);
-            _loginPanelVM.IsVisibleGeneratedKey = true;
-            _loginPanelVM.GeneratedKey = randomKeyInt;
+            string randomKeyString = randomKey.Next(100, 999).ToString();
+            _loginPanelVM.IsGeneratedKeyVisible = true;
+            _loginPanelVM.GeneratedKey = randomKeyString;
         }
 
         public GenerateKeyCommand(LoginPanelViewModel loginPanelVM)

@@ -13,7 +13,7 @@
     </UserControl.Resources>
     <Grid>
         <!--// CATEGORYTASKS LISTVIEW //-->
-        <ListView Visibility="{Binding IsVisibleListview, Converter={StaticResource booleanToVisibilityConverter}}"
+        <ListView Visibility="{Binding IsListviewVisible, Converter={StaticResource booleanToVisibilityConverter}}"
                   ItemsSource="{Binding CategoryTasksList,UpdateSourceTrigger=PropertyChanged}"
                   Width="300"
                   Background="#566779"

@@ -12,14 +12,14 @@ namespace ToDoApp.Commands.Profile
         private readonly CategoriesPanelViewModel _categoriesVM;
         public override void Execute(object parameter)
         {
-            if (_categoriesVM.IsVisibleAddPanel == false)
+            if (_categoriesVM.IsAddPanelVisible == false)
             {
-                _categoriesVM.IsVisibleAddPanel = true;
-                _categoriesVM.IsVisibleCategoryInfo = false;
+                _categoriesVM.IsAddPanelVisible = true;
+                _categoriesVM.IsCategoryInfoVisible = false;
             }
             else
             {
-                _categoriesVM.IsVisibleAddPanel = false;
+                _categoriesVM.IsAddPanelVisible = false;
             }
         }
 

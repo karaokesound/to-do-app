@@ -1,5 +1,4 @@
 ﻿using ToDoApp.ViewModels;
-using ToDoApp.ViewModels.Profile;
 
 namespace ToDoApp.Commands
 {
@@ -30,7 +29,6 @@ namespace ToDoApp.Commands
             {
                 viewModel.SelectedViewModel = new SettingsViewModel();
             }
-          
         }
     }
 }

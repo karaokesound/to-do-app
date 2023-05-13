@@ -9,14 +9,6 @@ namespace ToDoApp.ViewModels
     public class FinishedTasksViewModel : BaseViewModel
     {
         private bool _isMoreThanOneTask;
-
-        private ObservableCollection<TaskViewModel> _finishedTasksList;
-
-        public int FinishedCounter 
-        { 
-            get { return FinishedTasksList.Count; } 
-            set { OnPropertyChanged(nameof(FinishedCounter)); } 
-        }
         public bool IsMoreThanOneTask
         {
             get { return _isMoreThanOneTask; }
@@ -26,6 +18,8 @@ namespace ToDoApp.ViewModels
                 OnPropertyChanged(nameof(IsMoreThanOneTask));
             }
         }
+
+        private ObservableCollection<TaskViewModel> _finishedTasksList;
         public ObservableCollection<TaskViewModel> FinishedTasksList
         {
             get { return _finishedTasksList; }
@@ -34,6 +28,12 @@ namespace ToDoApp.ViewModels
                 _finishedTasksList = value;
                 OnPropertyChanged(nameof(FinishedTasksList));
             }
+        }
+
+        public int FinishedCounter
+        {
+            get { return FinishedTasksList.Count; }
+            set { OnPropertyChanged(nameof(FinishedCounter)); }
         }
 
         public FinishedTasksViewModel()

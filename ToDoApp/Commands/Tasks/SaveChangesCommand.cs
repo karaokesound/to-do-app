@@ -15,7 +15,7 @@ namespace ToDoApp.Commands
         private readonly TaskOperationsViewModel _tasksListVM;
         public override void Execute(object parameter)
         {
-            if (_tasksListVM.IsVisibleTaskEditor == true)
+            if (_tasksListVM.IsTaskEditorVisible == true)
             {
                 TaskViewModel editedTask = _tasksListVM.EditTaskViewModel;
 
@@ -39,7 +39,7 @@ namespace ToDoApp.Commands
                 }
                 
                 _tasksListVM.GetAllTasks();
-                _tasksListVM.IsVisibleTaskEditor = false;
+                _tasksListVM.IsTaskEditorVisible = false;
                 _tasksListVM.EditTaskViewModel.TaskTitle = string.Empty;
                 _tasksListVM.EditTaskViewModel.TaskDescription = string.Empty;
                 _tasksListVM.EditTaskViewModel.TaskValue = 0;

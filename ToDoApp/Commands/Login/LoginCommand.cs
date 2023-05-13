@@ -11,18 +11,16 @@ namespace ToDoApp.Commands
     public class LoginCommand : CommandBase
     {
         private readonly MainViewModel _mainVM;
-
-        private readonly LoginPanelViewModel _loginPanelVM;
         public override void Execute(object parameter)
         {
-            if (_mainVM.LoginPanelVM.Key == _mainVM.LoginPanelVM.GeneratedKey && _mainVM.LoginPanelVM.Key != 0
-                && _mainVM.LoginPanelVM.Username != null)
+            if (_mainVM.LoginPanelVM.Key == _mainVM.LoginPanelVM.GeneratedKey && (_mainVM.LoginPanelVM.Key != string.Empty
+                && _mainVM.LoginPanelVM.Username != null))
             {
                 string username = _mainVM.LoginPanelVM.Username;
                 UsernameStore.AddUsername(username);
                 _mainVM.SelectedViewModel = new AccountPanelViewModel();
                 _mainVM.IsTopbarVisible = true;
-                _mainVM.LoginPanelVM.IsVisibleGenerateKeyButton = false;
+                _mainVM.LoginPanelVM.IsGenerateKeyButtonVisible = false;
             }
             else MessageBox.Show("Your username or key is invalid", "Error");
         }
@@ -30,11 +28,6 @@ namespace ToDoApp.Commands
         public LoginCommand(MainViewModel mainVM)
         {
             _mainVM = mainVM;
-        }
-
-        public LoginCommand(LoginPanelViewModel loginPanelVM)
-        {
-            _loginPanelVM = loginPanelVM;
         }
     }
 }

@@ -14,44 +14,130 @@ namespace ToDoApp.ViewModels
     public class CategoriesPanelViewModel : BaseViewModel
     {
         private CategoryViewModel _newCategoryVM;
+        public CategoryViewModel NewCategoryVM
+        {
+            get { return _newCategoryVM; }
+            set
+            {
+                _newCategoryVM = value;
+                OnPropertyChanged(nameof(NewCategoryVM));
+            }
+        }
 
         private CategoryViewModel _selectedCategory;
+        public CategoryViewModel SelectedCategory
+        {
+            get { return _selectedCategory; }
+            set
+            {
+                _selectedCategory = value;
+                OnPropertyChanged(nameof(SelectedCategory));
+            }
+        }
 
         private ObservableCollection<CategoryViewModel> _categoryList;
+        public ObservableCollection<CategoryViewModel> CategoryList
+        {
+            get { return _categoryList; }
+            set
+            {
+                _categoryList = value;
+                OnPropertyChanged(nameof(CategoryList));
+            }
+        }
 
         private ObservableCollection<TaskViewModel> _categoryTasksList;
+        public ObservableCollection<TaskViewModel> CategoryTasksList
+        {
+            get { return _categoryTasksList; }
+            set
+            {
+                _categoryTasksList = value;
+                OnPropertyChanged(nameof(CategoryTasksList));
+            }
+        }
+      
+        private bool _isAddPanelVisible;
+        public bool IsAddPanelVisible
+        {
+            get { return _isAddPanelVisible; }
+            set
+            {
+                _isAddPanelVisible = value;
+                OnPropertyChanged(nameof(IsAddPanelVisible));
+            }
+        }
+
+        private bool _isListviewVisible;
+        public bool IsListviewVisible
+        {
+            get { return _isListviewVisible; }
+            set
+            {
+                _isListviewVisible = value;
+                OnPropertyChanged(nameof(IsListviewVisible));
+            }
+        }
+
+        private bool _isCategoryInfoVisible;
+        public bool IsCategoryInfoVisible
+        {
+            get { return _isCategoryInfoVisible; }
+            set
+            {
+                _isCategoryInfoVisible = value;
+                OnPropertyChanged(nameof(IsCategoryInfoVisible));
+            }
+        }
+
+        private int _taskCounter;
+        public int TaskCounter
+        {
+            get { return _taskCounter; }
+            set
+            {
+                _taskCounter = _allTasks.Count;
+                OnPropertyChanged(nameof(TaskCounter));
+            }
+        }
+
+        private int _finishedTaskCounter;
+        public int FinishedTaskCounter
+        {
+            get { return _finishedTaskCounter; }
+            set
+            {
+                _finishedTaskCounter = _finishedTasks.Count;
+                OnPropertyChanged(nameof(FinishedTaskCounter));
+            }
+        }
+
+        private int _remainingTasks;
+        public int RemainingTasks
+        {
+            get { return _remainingTasks; }
+            set
+            {
+                _remainingTasks = _allTasks.Count - _finishedTasks.Count;
+                OnPropertyChanged(nameof(RemainingTasks));
+            }
+        }
+      
+        public ICommand DisplayCategoriesCommand { get; }
+
+        public ICommand AddCategoryCommand { get; }
+
+        public ICommand DisplayAddPanelCommand { get; }
+
+        public ICommand DisplayTaskListviewCommand { get; }
+
+        public ICommand RemoveCategoryCommand { get; }
+
+        public ICommand DisplayButtonCommand { get; }
 
         private List<TaskViewModel> _finishedTasks;
 
         private List<TaskViewModel> _allTasks;
-
-        private bool _isAnyTask;
-
-        private bool _isVisibleCategories;
-
-        private bool _isVisibleAddPanel;
-
-        private bool _isVisibleCalendar;
-
-        private bool _isVisibleListview;
-
-        private bool _isVisibleCategoryInfo;
-
-        private string _noTasks;
-
-        private int _taskCounter;
-
-        private int _finishedTaskCounter;
-
-        private int _remainingTasks;
-
-        public ICommand DisplayCategoriesCommand { get; }
-        public ICommand AddCategoryCommand { get; }
-        public ICommand DisplayAddPanelCommand { get; }
-        public ICommand ShowCalendarCommand { get; }
-        public ICommand DisplayTaskListviewCommand { get; }
-        public ICommand RemoveCategoryCommand { get; }
-        public ICommand DisplayButtonCommand { get; }
 
         public CategoriesPanelViewModel()
         {
@@ -68,159 +154,6 @@ namespace ToDoApp.ViewModels
             _finishedTasks = new List<TaskViewModel>();
             _allTasks = new List<TaskViewModel>();
             GetCategories();
-        }
-
-        #region Categories booleans properties
-        public bool IsAnyTask
-        {
-            get { return _isAnyTask; }
-            set 
-            { 
-                _isAnyTask = value;
-                OnPropertyChanged(nameof(IsAnyTask));
-            }
-        }
-        
-        public bool IsVisibleCategories
-        {
-            get { return _isVisibleCategories; }
-            set
-            {
-                _isVisibleCategories = value;
-                OnPropertyChanged(nameof(IsVisibleCategories));
-            }
-        }
-       
-        public bool IsVisibleAddPanel
-        {
-            get { return _isVisibleAddPanel; }
-            set
-            {
-                _isVisibleAddPanel = value;
-                OnPropertyChanged(nameof(IsVisibleAddPanel));
-            }
-        }
-       
-        public bool IsVisibleCalendar
-        {
-            get { return _isVisibleCalendar; }
-            set
-            {
-                _isVisibleCalendar = value;
-                OnPropertyChanged(nameof(IsVisibleCalendar));
-            }
-        }
-
-        public bool IsVisibleListview
-        {
-            get { return _isVisibleListview; }
-            set
-            {
-                _isVisibleListview = value;
-                OnPropertyChanged(nameof(IsVisibleListview));
-            }
-        }
-    
-        public bool IsVisibleCategoryInfo 
-        {
-            get { return _isVisibleCategoryInfo; }
-            set
-            {
-                _isVisibleCategoryInfo = value;
-                OnPropertyChanged(nameof(IsVisibleCategoryInfo));
-            }
-        }
-        #endregion
-
-        public CategoryViewModel NewCategoryVM
-        {
-            get { return _newCategoryVM; }
-            set
-            {
-                _newCategoryVM = value;
-                OnPropertyChanged(nameof(NewCategoryVM));
-            }
-        }
-        
-        public CategoryViewModel SelectedCategory
-        {
-            get { return _selectedCategory; }
-            set
-            {
-                _selectedCategory = value;
-                OnPropertyChanged(nameof(SelectedCategory));
-            }
-        }
-        
-        public ObservableCollection<CategoryViewModel> CategoryList
-        {
-            get { return _categoryList; }
-            set
-            {
-                _categoryList = value;
-                OnPropertyChanged(nameof(CategoryList));
-            }
-        }
-      
-        public ObservableCollection<TaskViewModel> CategoryTasksList
-        {
-            get { return _categoryTasksList; }
-            set
-            {
-                _categoryTasksList = value;
-                OnPropertyChanged(nameof(CategoryTasksList));
-            }
-        }
-
-        public string NoTasks
-        {
-            get { return _noTasks; }
-            set 
-            { 
-                _noTasks = value;
-                OnPropertyChanged(nameof(NoTasks));
-            }
-        }
-    
-        public int TaskCounter
-        {
-            get { return _taskCounter; }
-            set
-            {
-                _taskCounter = _allTasks.Count;
-                if (_taskCounter > 0)
-                {
-                   IsAnyTask = true;
-                }
-                else
-                {
-                    IsAnyTask = false;
-                    _noTasks = "no tasks here";
-                } 
-                    
-                OnPropertyChanged(nameof(TaskCounter));
-                OnPropertyChanged(nameof(IsAnyTask));
-            }
-        }
-       
-        public int FinishedTaskCounter
-        {
-            get { return _finishedTaskCounter; }
-            set
-            {
-                _finishedTaskCounter = _finishedTasks.Count;
-                OnPropertyChanged(nameof(FinishedTaskCounter));
-            }
-        }
-       
-        public int RemainingTasks 
-        { 
-            get { return _remainingTasks; }
-            set
-            {
-                _remainingTasks = _allTasks.Count - _finishedTasks.Count;
-                OnPropertyChanged(nameof(RemainingTasks));
-            } 
         }
 
         public void GetCategories()
@@ -243,6 +176,12 @@ namespace ToDoApp.ViewModels
             CategoryTasksList.Clear();
             _finishedTasks.Clear();
             _allTasks.Clear();
+            RaiseCounters();
+
+            if (categoryTasksList.Count == 0)
+            {
+                return;
+            }
 
             foreach (TaskModel taskModel in categoryTasksList)
             {

@@ -12,7 +12,7 @@ namespace ToDoApp.Commands
         private readonly TaskOperationsViewModel _tasksListVM;
         public override void Execute(object parameter)
         {
-            _tasksListVM.IsVisibleTaskEditor = false;
+            _tasksListVM.IsTaskEditorVisible = false;
         }
 
         public ExitTaskEditingCommand(TaskOperationsViewModel tasksListVM)

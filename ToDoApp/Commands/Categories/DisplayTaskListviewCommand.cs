@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using ToDoApp.Models;
-using ToDoApp.Services;
 using ToDoApp.ViewModels;
 using ToDoAppDataAccess;
 
@@ -14,14 +13,14 @@ namespace ToDoApp.Commands.Profile
 
         public override void Execute(object parameter)
         {
-            if (_categoriesPanelVM.IsVisibleListview == false)
+            if (_categoriesPanelVM.IsListviewVisible == false)
             {
-                _categoriesPanelVM.IsVisibleListview = true;
+                _categoriesPanelVM.IsListviewVisible = true;
                 GetCategoryTaskList();
             }
             else
             {
-                _categoriesPanelVM.IsVisibleListview = false;
+                _categoriesPanelVM.IsListviewVisible = false;
             }
         }
 

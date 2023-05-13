@@ -30,8 +30,8 @@ namespace ToDoApp.Commands
                 _categoriesVM.NewCategoryVM.Name = string.Empty;
                 _categoriesVM.NewCategoryVM.Hashtag = string.Empty;
                 _categoriesVM.NewCategoryVM.CategoryDate = DateTime.Now;
-                _categoriesVM.IsVisibleAddPanel = false;
-                _categoriesVM.IsVisibleListview = false;
+                _categoriesVM.IsAddPanelVisible = false;
+                _categoriesVM.IsListviewVisible = false;
             }
             else return;
         }
