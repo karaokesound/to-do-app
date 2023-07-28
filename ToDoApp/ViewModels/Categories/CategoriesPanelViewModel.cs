@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows.Input;
@@ -162,6 +163,13 @@ namespace ToDoApp.ViewModels
 
             using (ToDoAppDbContext context = new ToDoAppDbContext())
             {
+                if (!context.Categories.Any())
+                {
+                    context.Categories.Add(new CategoryModel() { Id = 1, GuidId = Guid.NewGuid(), Name = "All Tasks", Hashtag = "#all",
+                    CategoryDate = DateTime.UtcNow});
+                    context.SaveChanges();
+                }
+
                 var categoryListModel = context.Categories.ToList();
                 foreach (CategoryModel categoryModel in categoryListModel)
                 {

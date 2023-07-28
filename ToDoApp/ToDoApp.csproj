@@ -226,9 +226,6 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
   <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\ToDoApp.Models\ToDoApp.Models.csproj">
